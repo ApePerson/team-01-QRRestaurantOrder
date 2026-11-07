@@ -18,7 +18,7 @@
 </tbody>
 </table>
 
-## 3.2   Constraints
+## 3.2   Quality Requirements
 | **ID** | **Requirement — with threshold, condition and method** | **Priority** | **Source** | **How it will be verified** |
 |--------|--------------------------------------------------------|--------------|------------|-----------------------------|
 | QR-01 | Performance. 95% of submitted orders shall appear on an open staff order screen within 3 seconds of submission, under 20 tables ordering at the same time. | MUST | S2, S3 | Scripted test sends 100 orders from 20 simulated clients; compare submit and display timestamps; pass if ≥ 95 are ≤ 3 s. |
@@ -27,4 +27,12 @@
 | QR-04 | Accessibility. The customer menu, cart and confirmation pages shall meet WCAG 2.1 Level AA [R3]. | SHOULD | S1, R3 | Zero serious/critical issues reported by axe DevTools, plus a full order completed using VoiceOver and TalkBack. |
 | QR-05 | Security. 100% of staff and manager server endpoints shall reject requests without a valid session, and manager-only endpoints shall reject Staff-role sessions. | MUST | S4 |Automated test calls every endpoint logged-out, as Staff and as Manager; pass only if every expected 401/403 is returned. |
 | QR-06 | Availability. The system shall be reachable at least 99% of the time during a 7-day trial from 11:00 to 22:00 daily. | COULD | S4 |Free uptime monitor checks the menu URL every 5 minutes; uptime % computed from its log. |
+
+## 3.3   Constraint requirements
+| **ID** | **Constraint — one sentence** | **Source** | **Why it cannot be negotiated** |
+|--------|-------------------------------|------------|---------------------------------|
+| CON-01 | The customer interface shall run in the phone's web browser without installing any app. | C1 | It is the defining idea of the product; a diner will not install an app for one meal. |
+| CON-02 | The system shall not collect, transmit or store payment card data. | C4, R5 | Handling card data triggers PCI DSS compliance the team cannot meet. |
+| CON-03 | All source code and documents shall be kept in a repository the instructor can access. | C5, R2 | Required by the course for grading and contribution evidence. |
+
 
