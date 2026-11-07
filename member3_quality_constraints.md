@@ -1,4 +1,4 @@
-
+# P1 sections — Member 3 — Quality and Constraints Lead
 
 ## 2.4   Constraints
 <table>
@@ -22,29 +22,9 @@
 | **ID** | **Requirement — with threshold, condition and method** | **Priority** | **Source** | **How it will be verified** |
 |--------|--------------------------------------------------------|--------------|------------|-----------------------------|
 | QR-01 | Performance. 95% of submitted orders shall appear on an open staff order screen within 3 seconds of submission, under 20 tables ordering at the same time. | MUST | S2, S3 | Scripted test sends 100 orders from 20 simulated clients; compare submit and display timestamps; pass if ≥ 95 are ≤ 3 s. |
-QR-02
-Performance. The customer menu shall show its first category of items within 3 seconds of opening a table URL in 95% of loads on a mid-range phone over a 4G connection.
-MUST
-S1
-20 loads with Chrome DevTools "Fast 4G" throttling and a mid-range phone profile; record time to first item.
-QR-03
-Usability. At least 8 of 10 first-time users shall place an order of 2 items, one with an option chosen, in under 2 minutes without help.
-SHOULD
-S1
-Moderated test with 10 students outside the team; timed from scan to confirmation screen; results in /docs/usability.
-QR-04
-Accessibility. The customer menu, cart and confirmation pages shall meet WCAG 2.1 Level AA [R3].
-SHOULD
-S1, R3
-Zero serious/critical issues reported by axe DevTools, plus a full order completed using VoiceOver and TalkBack.
-QR-05
-Security. 100% of staff and manager server endpoints shall reject requests without a valid session, and manager-only endpoints shall reject Staff-role sessions.
-MUST
-S4
-Automated test calls every endpoint logged-out, as Staff and as Manager; pass only if every expected 401/403 is returned.
-QR-06
-Availability. The system shall be reachable at least 99% of the time during a 7-day trial from 11:00 to 22:00 daily.
-COULD
-S4
-Free uptime monitor checks the menu URL every 5 minutes; uptime % computed from its log.
+| QR-02 | Performance. The customer menu shall show its first category of items within 3 seconds of opening a table URL in 95% of loads on a mid-range phone over a 4G connection. | MUST | S1 | 20 loads with Chrome DevTools "Fast 4G" throttling and a mid-range phone profile; record time to first item. |
+| QR-03 | Usability. At least 8 of 10 first-time users shall place an order of 2 items, one with an option chosen, in under 2 minutes without help. | SHOULD | S1 | Moderated test with 10 students outside the team; timed from scan to confirmation screen; results in /docs/usability. |
+| QR-04 | Accessibility. The customer menu, cart and confirmation pages shall meet WCAG 2.1 Level AA [R3]. | SHOULD | S1, R3 | Zero serious/critical issues reported by axe DevTools, plus a full order completed using VoiceOver and TalkBack. |
+| QR-05 | Security. 100% of staff and manager server endpoints shall reject requests without a valid session, and manager-only endpoints shall reject Staff-role sessions. | MUST | S4 |Automated test calls every endpoint logged-out, as Staff and as Manager; pass only if every expected 401/403 is returned. |
+| QR-06 | Availability. The system shall be reachable at least 99% of the time during a 7-day trial from 11:00 to 22:00 daily. | COULD | S4 |Free uptime monitor checks the menu URL every 5 minutes; uptime % computed from its log. |
 
