@@ -1,12 +1,11 @@
+##8   Prototype Evidence 
 <table>
 <colgroup>
 <col style="width: 100%" />
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><p>8   Prototype Evidence 
-
-Question. Can a new order reach the staff screen within 3 seconds for 95% of orders while 20 tables order at once, and does polling every 3 seconds also meet that (as P1 risk R2 assumed)? 
+<td><p> Question. Can a new order reach the staff screen within 3 seconds for 95% of orders while 20 tables order at once, and does polling every 3 seconds also meet that (as P1 risk R2 assumed)? 
 
 Spike. /spikes/spike-01-live-orders (owner Len Isherwood): a throw-away order server and a benchmark that sends 100 orders from 20 simulated tables (all 20 within 1 s of each other, five rounds) to one staff screen fed by push and one fed by polling, with 0, 80 and 150 ms of simulated one-way network delay. Three runs per setting; raw results in results.jsonl [R8]. 
 
