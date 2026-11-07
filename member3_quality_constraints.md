@@ -13,24 +13,9 @@ Spike. /spikes/spike-01-live-orders (owner Len Isherwood): a throw-away order se
 </table>
  
 
-| One-way delay | Push p95 | Push within 3 s | Poll 3 s p95 | Poll 3 s within 3 s | Poll 1 s p95 | Poll 1 s within 3 s 
-
-| 0 ms            |5 ms 
-	
-
-100% 
-	
-
-2,705 ms 
-	
-
-100% 
-	
-
-— 
-	
-
-— 
+| *One-way delay* | *Push p95* | *Push within 3 s* | *Poll 3 s p95* | *Poll 3 s within 3 s* | *Poll 1 s p95* | *Poll 1 s within 3 s* |
+|-----------------|------------|-------------------|----------------|-----------------------|----------------|-----------------------|
+| 0 ms            | 5 ms       | 100%              | 2,705 ms       | 100%                  | —              | —                     |
 
 80 ms 
 	
