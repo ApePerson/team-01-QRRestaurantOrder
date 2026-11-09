@@ -1,0 +1,37 @@
+// Component view (high-level design). Each component lists what it answers to.
+digraph C {
+  graph [rankdir=TB, fontname="Helvetica", dpi=200, nodesep=0.35, ranksep=0.55, pad=0.2, compound=true];
+  node  [shape=box, style="rounded,filled", fillcolor="#E8F0FB", color="#3B6FB6", fontname="Helvetica", fontsize=10];
+  edge  [fontname="Helvetica", fontsize=8.5, color="#444444"];
+
+  subgraph cluster_client { label="Client tier — runs in a browser"; fontsize=11; style="rounded,dashed"; color="#888888";
+    C1 [label=<«component» <B>C1 Customer Web App</B><BR/><FONT POINT-SIZE="8.5">UC-01, UC-02, UC-07 · ADR-05</FONT>>];
+    C2 [label=<«component» <B>C2 Staff &amp; Manager Web App</B><BR/><FONT POINT-SIZE="8.5">UC-03 – UC-06</FONT>>];
+  }
+  subgraph cluster_server { label="Application server — one deployable (ADR-01)"; fontsize=11; style="rounded"; color="#1F3A5F";
+    C3 [label=<«component» <B>C3 Access Control</B><BR/><FONT POINT-SIZE="8.5">FR-14 · QR-05 · QAS-3</FONT>>];
+    C4 [label=<«component» <B>C4 Menu Manager</B><BR/><FONT POINT-SIZE="8.5">UC-01, UC-04, UC-05</FONT>>];
+    C5 [label=<«component» <B>C5 Table &amp; QR Manager</B><BR/><FONT POINT-SIZE="8.5">UC-06 · FR-01, FR-15</FONT>>];
+    C6 [label=<«component» <B>C6 Order Manager</B><BR/><FONT POINT-SIZE="8.5">UC-01, UC-03, UC-07</FONT>>];
+    C7 [label=<«component» <B>C7 Live Update Hub</B><BR/><FONT POINT-SIZE="8.5">QAS-1, QAS-2 · ADR-02 · spike 01</FONT>>];
+    C8 [label=<«component» <B>C8 Payment Adapter</B><BR/><FONT POINT-SIZE="8.5">UC-07 · QAS-4 · ADR-03</FONT>>];
+  }
+  C9 [label=<«component» <B>C9 Data Store</B><BR/><FONT POINT-SIZE="8.5">ADR-04</FONT>>, shape=cylinder, style=filled, fillcolor="#EEF2F7"];
+  PG [label=<«external system»<BR/><B>Payment Gateway</B>>, style="dashed", fillcolor="white", color="#B26A00", fontcolor="#7A4A00"];
+
+  C1 -> C4 [label="read menu"];
+  C1 -> C5 [label="open table"];
+  C1 -> C6 [label="submit order,\nask for bill, pay"];
+  C2 -> C3 [label="log in"];
+  C2 -> C6 [label="change status"];
+  C2 -> C4 [label="edit menu,\nsold out"];
+  C2 -> C5 [label="set up tables"];
+  C6 -> C7 [label="publish\n'order changed'"];
+  C7 -> C2 [label="push new orders\nand status", style=dashed];
+  C7 -> C1 [label="push status", style=dashed];
+  C6 -> C8 [label="take payment"];
+  C8 -> PG [label="hosted checkout,\nresult"];
+  C3 -> C9; C4 -> C9; C5 -> C9; C6 -> C9; C8 -> C9;
+  {rank=same; C3; C4; C5; C6}
+  {rank=same; C7; C8}
+}
